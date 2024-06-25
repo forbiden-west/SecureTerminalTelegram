@@ -26,3 +26,13 @@ Changelog:
     1.0.1
     
      Updated code look
+
+How to run:
+
+    1.Download 'SecureTerminalTelegram.app' and 'STT Client.sh'                 Optional
+
+    2.Open Prorpeties of 'STT Client.sh' and click 'Run as program'(Get True)   Not optional
+
+    3.Open 'SecureTerminalTelegram.app' and change settings                     Optional
+
+    And done!
