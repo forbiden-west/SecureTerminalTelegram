@@ -4,7 +4,7 @@ ID = ''# Your telegram ID(for access setting 'ID')
 Token_Of_Bot = ''# Token bot
 Canceled_Commands = ['fish', 'python3', 'su', 'su -', 'exit']# Enter command/s at you dont want to run
 # # 1
-STT_build = '1.0.1'
+STT_build = '1.0.2'
 import os, random, telebot
 # # 2
 if Access == 'Any':Access = 1
@@ -29,23 +29,28 @@ def handler(message):
         if command.find('as su') != 1:su = True
         else:su = False
         if command.find(Canceled_Commands) != -1:
-            tk.send_message(id, 'STT: This command dont allowed to run')
+            tk.send_message(id, 'STT_Host: This command dont allowed to run')
             dr = True
         else:dr = False
         if dr == True:
-            if su == True:os.system(f'sudo {command}')
-            else:os.system(command)
+            if su == True:
+                if str(os.system(f'sudo {command}')) == '32512':tk.send_message(id, 'STT_Host: Command dont run correctly')
+                else:tk.send_message(id, 'STT_Host: Command succefull completed')
+            else:
+                if str(os.system(command)) == '32512':tk.send_message(id, 'STT_Host: Command dont run correctly')
+                else:tk.send_message(id, 'STT_Host: Command succefull completed')
     if Access == 1:
-        id = message.chat.id
-        command = message.text
-        if Access == 0 and ID == str(id):
-            if command.find('as su') != 1:su = True
-            else:su = False
-            if command.find(Canceled_Commands) != -1:
-                tk.send_message(id, 'STT: This command dont allowed to run')
-                dr = True
-            else:dr = False
-            if dr == True:
-                if su == True:os.system(f'sudo {command}')
-                else:os.system(command)
+        if command.find('as su') != 1:su = True
+        else:su = False
+        if command.find(Canceled_Commands) != -1:
+            tk.send_message(id, 'STT_Host: This command dont allowed to run')
+            dr = True
+        else:dr = False
+        if dr == True:
+            if su == True:
+                if str(os.system(f'sudo {command}')) == '32512':tk.send_message(id, 'STT_Host: Command dont run correctly')
+                else:tk.send_message(id, 'STT_Host: Command succefull completed')
+            else:
+                if str(os.system(command)) == '32512':tk.send_message(id, 'STT_Host: Command dont run correctly')
+                else:tk.send_message(id, 'STT_Host: Command succefull completed')
 tk.polling()

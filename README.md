@@ -15,10 +15,14 @@ Required:
 
 >Python3.12 or Python3.11
 
-Now is newest version is 1.0
+Now is newest version is 1.0.2
 
 Changelog:
     
+    1.0.2
+
+     Returned back feature of feedback
+    
     1.0.1
     
-     --Updated code look
+     Updated code look
