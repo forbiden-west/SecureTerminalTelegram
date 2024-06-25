@@ -1,31 +1,51 @@
-import os, telebot, random
-chars = '+-/*!&$#?=@<>abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+# # #
+Access = 'ID'# 'Any' - access to your terminal for anyone, 'ID' - access only for 1 ID
+ID = ''# Your telegram ID(for access setting 'ID')
+Token_Of_Bot = ''# Token bot
+Canceled_Commands = ['fish', 'python3', 'su', 'su -', 'exit']# Enter command/s at you dont want to run
+# # 1
+STT_build = '1.0.1'
+import os, random, telebot
+# # 2
+if Access == 'Any':Access = 1
+if Access == 'ID':Access = 0
+tk = telebot.TeleBot(Token_Of_Bot)
 for i in range(8):
-    identifier = ''
-    for i in range(8):identifier += random.choices(chars)
-creator_id = 'ACCESS ID'# Enter your ID
+    unique_identifier = ''
+    for i in range(8):unique_identifier += random.choice('+-/*!&$#?=@<>abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')
+# 1
+print('Please login at sudo')
 os.system('sudo clear')
-tk = telebot.TeleBot('BOT TOKEN')# Enter Telegram bot token
-@tk.message_handler(commands=['start'])# If user start bot
-def start(message):
+# 2
+@tk.message_handler(commands=['start'])
+def Command_Start(message):
     id = message.chat.id
-    tk.send_message(id, f'Unique identifier is {identifier}')
+    tk.send_message(id, f'Unique identifier:{unique_identifier}, client is online')
 @tk.message_handler(func=lambda message: True)
-def handle_message(message):
-    id = message.from_user.id
-    text = message.text
-    if text.find('su') != -1 or text.find('su -') != -1 or text.find('exit') != -1 or text.find('python3') != -1 or text.find('fish') != -1:# If user write su or su - or exit or python3 or fish command dont get runned
-        tk.send_message(id, 'Terminal: not allowed')
-        fn = True
-    else:fn = False
-    if text.find('as su') != -1 and str(id) == creator_id and fn == False:# If user want run command at sudo(type "as su")
-        su = True
-        result = os.system(f'sudo {text}')
-        if int(result) == 32512:tk.send_message(id, 'Terminal: command was failed of running')
-        else:tk.send_message(id, 'Terminal: command succeful completed')
-    else:su = False
-    if su == False and str(id) == creator_id and fn == False:
-        result = os.system(text)
-        if int(result) == 32512:tk.send_message(id, 'Terminal: command was failed of running')
-        else:tk.send_message(id, 'Terminal: command succeful completed')
+def handler(message):
+    id = message.chat.id
+    command = message.text
+    if Access == 0 and ID == str(id):
+        if command.find('as su') != 1:su = True
+        else:su = False
+        if command.find(Canceled_Commands) != -1:
+            tk.send_message(id, 'STT: This command dont allowed to run')
+            dr = True
+        else:dr = False
+        if dr == True:
+            if su == True:os.system(f'sudo {command}')
+            else:os.system(command)
+    if Access == 1:
+        id = message.chat.id
+        command = message.text
+        if Access == 0 and ID == str(id):
+            if command.find('as su') != 1:su = True
+            else:su = False
+            if command.find(Canceled_Commands) != -1:
+                tk.send_message(id, 'STT: This command dont allowed to run')
+                dr = True
+            else:dr = False
+            if dr == True:
+                if su == True:os.system(f'sudo {command}')
+                else:os.system(command)
 tk.polling()
