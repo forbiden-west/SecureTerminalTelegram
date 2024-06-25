@@ -12,6 +12,7 @@ How to run?
 
 Required:
 >Telebot
+>
 >Python3.12 or Python3.11
 
 Now is newest version is 1.0
