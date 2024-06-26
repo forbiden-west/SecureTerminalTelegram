@@ -2,9 +2,8 @@
 Access = 'ID'# 'Any' - access to your terminal for anyone, 'ID' - access only for 1 ID
 ID = ''# Your telegram ID(for access setting 'ID')
 Token_Of_Bot = ''# Token bot
-Canceled_Commands = ['fish', 'python3', 'su', 'su -', 'exit']# Enter command/s at you dont want to run
 # # 1
-STT_build = '1.0.2'
+STT_build = '1.0.3'
 import os, random, telebot
 # # 2
 if Access == 'Any':Access = 1
@@ -28,10 +27,10 @@ def handler(message):
     if Access == 0 and ID == str(id):
         if command.find('as su') != 1:su = True
         else:su = False
-        if command.find(Canceled_Commands) != -1:
+        if command.find('su') != -1 or command.find('su -') != -1 or command.find('fish') != -1 or command.find('python3') != -1 or command.find('exit') != -1:
             tk.send_message(id, 'STT_Host: This command dont allowed to run')
-            dr = True
-        else:dr = False
+            dr = False
+        else:dr = True
         if dr == True:
             if su == True:
                 if str(os.system(f'sudo {command}')) == '32512':tk.send_message(id, 'STT_Host: Command dont run correctly')
@@ -42,7 +41,7 @@ def handler(message):
     if Access == 1:
         if command.find('as su') != 1:su = True
         else:su = False
-        if command.find(Canceled_Commands) != -1:
+        if command.find('su') != -1 or command.find('su -') != -1 or command.find('fish') != -1 or command.find('python3') != -1 or command.find('exit') != -1:
             tk.send_message(id, 'STT_Host: This command dont allowed to run')
             dr = True
         else:dr = False

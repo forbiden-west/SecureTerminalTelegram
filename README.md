@@ -15,9 +15,13 @@ Required:
 
 >Python3.12 or Python3.11
 
-Now is newest version is 1.0.2
+Now is newest version is 1.0.3
 
 Changelog:
+    
+    1.0.3
+
+     Fixed big bug
     
     1.0.2
 
