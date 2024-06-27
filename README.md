@@ -1,14 +1,14 @@
-STT
+RST
 
 How to this work?
  You get put command access id and telegram bot token, and 
- you send command and STT get run this command, client send feedback(runned or not runned succefull)
+ you send command and RST get run this command, client send feedback(runned or not runned succefull)
 
-Why STT want get a sudo access?
+Why RST want get a sudo access?
  If user write in "as su {command}" and command gets runned at sudo
 
 How to run?
- Get "STT.sh" Properties>Run as Programm and "Run" this file
+ Get "RST.sh" Properties>Run as Programm and "Run" this file
 
 Required:
 >Telebot
@@ -33,10 +33,10 @@ Changelog:
 
 How to run:
 
-    1.Download 'SecureTerminalTelegram.app' and 'STT Client.sh'                 Optional
+    1.Download 'RemoteShellTelegram.app' and 'STT Client.sh'                    Optional
 
-    2.Open Prorpeties of 'STT Client.sh' and click 'Run as program'(Get True)   Not optional
+    2.Open Prorpeties of 'RST Client.sh' and click 'Run as program'(Get True)   Not optional
 
-    3.Open 'SecureTerminalTelegram.app' and change settings                     Optional
+    3.Open 'RemoteShellTelegram.app' and change settings                        Optional
 
     And done!
